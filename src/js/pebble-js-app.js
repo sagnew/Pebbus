@@ -12,6 +12,25 @@ var executeGetRequest = function(url, callback){
 	req.send(null);
 }
 
+var mapStopsToTags = function(stops){
+	executeGetRequest('http://runextbus.herokuapp.com/config', function(response){
+		stopTags = [];
+		for(var stopTag in response.stops){
+			if(response.stops.hasOwnProperty(stopTag)){
+				for(var i = 0; i<stops.length; i += 1){
+					if(stops[i] === response.stops[stopTag]){
+						stopTags.push(stopTag);
+						break;
+					}
+				}
+			}
+		}
+		Pebble.showSimpleNotificationOnPebble("Nearby stops", stopTags.join(' '));
+	});
+}
+
+/*Creates an array containing the titles of nearby stops.
+Called by displayBusInfo*/
 var getNearbyStops = function(response){
 	var stops = [];
 	for(var k in response) {
@@ -19,9 +38,10 @@ var getNearbyStops = function(response){
 			stops.push(k);
 		}
 	}
-	Pebble.showSimpleNotificationOnPebble("Nearby stops", stops.join(' '));
+	mapStopsToTags(stops);
 }
 
+/*Initiates the entire chain of callbacks to display the bus info in one notification*/
 var displayBusInfo = function(){
 	executeGetRequest('http://runextbus.herokuapp.com/nearby/40.5040/-74.44905', getNearbyStops);
 }
