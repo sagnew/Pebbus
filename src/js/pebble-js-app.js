@@ -14,14 +14,17 @@ var executeGetRequest = function(url, callback){
 }
 
 var displayBusPredictions = function(stops, stopTags){
-	executeGetRequest('http://runextbus.herokuapp.com/stop/' + stopTags[0], function(response){
-		predictions = [];
-		for(var i=0; i<response.length; i += 1){
-			bus = response[i];
-			predictions.push(bus.title + ' ' + bus.direction + ': ' + bus.predictions);
-		}
-		Pebble.showSimpleNotificationOnPebble(stops[0], predictions.join('\n'));
-	});
+	var i, j;
+	for(i=0; i<stopTags.length; i += 1){
+		executeGetRequest('http://runextbus.herokuapp.com/stop/' + stopTags[i], function(response){
+			predictions = [];
+			for(j=0; j<response.length; j += 1){
+				bus = response[j];
+				predictions.push(bus.title + ' ' + bus.direction + ': ' + bus.predictions);
+			}
+			Pebble.showSimpleNotificationOnPebble(stops[i], predictions.join('\n'));
+		});
+	}
 }
 
 /*Gets the tags associated with each stop(by stop title) to make further api calls*/
@@ -29,7 +32,7 @@ var mapStopsToTags = function(stops){
 	executeGetRequest('http://runextbus.herokuapp.com/config', function(response){
 		stopTags = [];
 		for(var i=0; i<stops.length; i += 1){
-			stopTags.push(response.stopsByTitle[stops[i]].tags[0]);
+			stopTags[i] = response.stopsByTitle[stops[i]].tags[0];
 		}
 		displayBusPredictions(stops, stopTags);
 	});
