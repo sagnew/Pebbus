@@ -15,15 +15,8 @@ var executeGetRequest = function(url, callback){
 var mapStopsToTags = function(stops){
 	executeGetRequest('http://runextbus.herokuapp.com/config', function(response){
 		stopTags = [];
-		for(var stopTag in response.stops){
-			if(response.stops.hasOwnProperty(stopTag)){
-				for(var i = 0; i<stops.length; i += 1){
-					if(stops[i] === response.stops[stopTag]){
-						stopTags.push(stopTag);
-						break;
-					}
-				}
-			}
+		for(var i=0; i<stops.length; i += 1){
+			stopTags.push(response.stopsByTitle.tags[0]);
 		}
 		Pebble.showSimpleNotificationOnPebble("Nearby stops", stopTags.join(' '));
 	});
