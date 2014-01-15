@@ -1,0 +1,19 @@
+{
+    "versionLabel": "1.0",
+    "uuid": "06210b4d-6f55-4728-a79d-930686f8b10b",
+    "appKeys": {},
+    "longName": "Pebbus",
+    "versionCode": 1,
+    "capabilities": [
+        "location",
+        "configurable"
+    ],
+    "shortName": "Pebbus",
+    "companyName": "Sam Agnew",
+    "watchapp": {
+        "watchface": false
+    },
+    "resources": {
+        "media": []
+    }
+}
