@@ -13,14 +13,25 @@ var executeGetRequest = function(url, callback){
 	req.send(null);
 }
 
+var displayBusPredictions = function(stops, stopTags){
+	executeGetRequest('http://runextbus.herokuapp.com/stop/' + stopTags[0], function(response){
+		predictions = [];
+		for(var i=0; i<response.length; i += 1){
+			bus = response[i];
+			predictions.push(bus.title + ' ' + bus.direction + ': ' + bus.predictions);
+		}
+		Pebble.showSimpleNotificationOnPebble(stops[0], predictions.join('\n'));
+	});
+}
+
 /*Gets the tags associated with each stop(by stop title) to make further api calls*/
 var mapStopsToTags = function(stops){
 	executeGetRequest('http://runextbus.herokuapp.com/config', function(response){
 		stopTags = [];
 		for(var i=0; i<stops.length; i += 1){
-			stopTags.push(response.stopsByTitle.tags[0]);
+			stopTags.push(response.stopsByTitle[stops[i]].tags[0]);
 		}
-		Pebble.showSimpleNotificationOnPebble("Nearby stops", stopTags.join(' '));
+		displayBusPredictions(stops, stopTags);
 	});
 }
 
