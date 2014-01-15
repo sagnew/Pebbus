@@ -1,3 +1,4 @@
+/*Takes a url and a callback function, and executes the callback on the response returned by the request*/
 var executeGetRequest = function(url, callback){
 	var req = new XMLHttpRequest();
   	req.open('GET', url, true);
@@ -12,6 +13,7 @@ var executeGetRequest = function(url, callback){
 	req.send(null);
 }
 
+/*Gets the tags associated with each stop(by stop title) to make further api calls*/
 var mapStopsToTags = function(stops){
 	executeGetRequest('http://runextbus.herokuapp.com/config', function(response){
 		stopTags = [];
