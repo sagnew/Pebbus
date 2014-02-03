@@ -1,8 +1,0 @@
-argv = ['/opt/pebble/Pebble/waf', 'configure', 'build']
-environ = {'WINDOWID': '23068680', 'XDG_RUNTIME_DIR': '/run/user/1000', 'COLORTERM': 'rxvt', 'LOGNAME': 'reggi', 'USER': 'reggi', 'HOME': '/home/reggi', 'XDG_VTNR': '1', 'PATH': '/opt/pebble/tools/pebble:/opt/pebble/arm-cs-tools/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/vendor_perl:/usr/bin/core_perl', 'XDG_SESSION_ID': '1', 'DISPLAY': ':0', '_': '/opt/pebble/Pebble/waf', 'MOZ_PLUGIN_PATH': '/usr/lib/mozilla/plugins', 'LANG': 'en_US.UTF-8', 'TERM': 'rxvt-unicode-256color', 'SHELL': '/bin/bash', 'COLORFGBG': '11;8', 'XAUTHORITY': '/home/reggi/.Xauthority', 'SHLVL': '6', 'PWD': '/home/reggi/c0dez/Pebbus/update/Pebbus', 'WINDOWPATH': '7', 'DESKTOP_STARTUP_ID': 'awesome/urxvt/342-9-reggi-desktop_TIME2984032', 'TERMINFO': '/usr/share/terminfo', 'MAIL': '/var/spool/mail/reggi', 'JAVA_HOME': '/usr/lib/jvm/java-7-openjdk', 'XDG_SEAT': 'seat0'}
-files = ['/home/reggi/c0dez/Pebbus/update/Pebbus/wscript']
-hash = 4672844372416070989
-options = {'files': '', 'jobs': 4, 'verbose': 0, 'nocache': False, 'progress_bar': 0, 'timestamp': None, 'distcheck_args': None, 'top': '', 'destdir': '', 'keep': 0, 'zones': '', 'debug': False, 'prefix': '/usr/local/', 'download': False, 'force': False, 'targets': '', 'out': ''}
-out_dir = '/home/reggi/c0dez/Pebbus/update/Pebbus/build'
-run_dir = '/home/reggi/c0dez/Pebbus/update/Pebbus'
-top_dir = '/home/reggi/c0dez/Pebbus/update/Pebbus'
